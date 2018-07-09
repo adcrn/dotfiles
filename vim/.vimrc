@@ -66,9 +66,12 @@ set title                " change the terminal's title
 set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set visualbell           " please don't beep
+colo gruvbox
+set background=dark
 
 function! s:goyo_enter()
     colorscheme pencil
+    set background=dark
 endfunction
 
 function! s:goyo_leave()

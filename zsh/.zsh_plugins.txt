@@ -1,6 +1,4 @@
 # Productivity stuff
-Tarrasch/zsh-autoenv
-valentinocossar/sublime
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
 
@@ -8,4 +6,3 @@ zsh-users/zsh-autosuggestions
 geometry-zsh/geometry
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
-supercrabtree/k
