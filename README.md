@@ -8,6 +8,7 @@ I do virtually all of my development in `vim`, which is actually not that bad af
 - [Gruvbox](https://github.com/morhetz/gruvbox) - solarized-esque dark theme
 - [lightline](https://github.com/itchyny/lightline.vim) - statusline plugin
 - [Nerdtree](https://github.com/scrooloose/nerdtree) - file system tree explorer
+- [rainbow_parentheses.vim](https://github.com/junegunn/rainbow_parentheses.vim) - color-code open and closing parentheses
 - [tcomment_vim](https://github.com/tomtom/tcomment_vim) - lots of options, I just use it to make comments easier
 - [vim-colors-pencil](https://github.com/reedes/vim-colors-pencil) - dark is the theme of choice for Goyo
 

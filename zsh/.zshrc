@@ -20,6 +20,7 @@ alias cl="clear"
 # ls stuff
 alias l="exa -l --git --group-directories-first"
 alias la="exa -la --git --group-directories-first"
+alias lt="exa -T"
 
 # pass
 alias p="pass"
