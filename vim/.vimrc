@@ -2,6 +2,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
 
+set rtp+=/usr/local/opt/fzf
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -35,6 +37,12 @@ Plugin 'scrooloose/nerdtree'
 " Rainbow Parantheses
 Plugin 'junegunn/rainbow_parentheses.vim'
 
+" LimeLight
+Plugin 'junegunn/limelight.vim'
+
+" fzf
+Plugin 'junegunn/fzf'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -64,6 +72,8 @@ set noerrorbells         " don't beep
 set noshowmode           " lightline already handles statusbar
 set relativenumber       " show how far away a line is
 set showmatch            " show matching parentheses
+set splitbelow           " new vertical split will show new window on bottom
+set splitright           " new horizontal split will show new window on right
 set tabstop=4            " tabs are four soaces
 set textwidth=79         " wrap lines after 80 chars
 set title                " change the terminal's title
@@ -81,16 +91,18 @@ set background=dark
 function! s:goyo_enter()
     colorscheme pencil
     set background=dark
+    :Limelight
 endfunction
 
 function! s:goyo_leave()
+    :Limelight!
     colorscheme gruvbox
 endfunction
 
 " Mapping
-map <C-n> :NERDTreeToggle<CR>   " open nerdtree with ctrl-n
-nnoremap ; :                    " map semicolon to colon
-inoremap jj <ESC>               " double-tap j to escape
+map <C-n> :NERDTreeToggle<CR>
+nnoremap ; :
+inoremap jj <ESC>
 
 " Enable/disable Goyo on command
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
