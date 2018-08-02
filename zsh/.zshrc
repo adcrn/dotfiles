@@ -3,15 +3,19 @@ source ~/.zsh_plugins.sh
 setopt auto_cd
 export PATH=~/development/flutter/bin:$PATH
 
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+
 ## Completion stuff
 autoload -U compinit
 compinit
 
 ## Geometry stuff
-PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-PROMPT_GEOMETRY_EXEC_TIME=true
-PROMPT_GEOMETRY_GIT_CONFLICTS=true
-GEOMETRY_COLOR_DIR="pink"
+#PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
+#PROMPT_GEOMETRY_EXEC_TIME=true
+#PROMPT_GEOMETRY_GIT_CONFLICTS=true
+#GEOMETRY_COLOR_DIR="pink"
 
 ## Aliases
 # clear screen
@@ -28,9 +32,11 @@ alias pg="pass generate"
 alias pc="pass -c"
 alias pr="pass rm"
 
+# pipes.sh
+alias pipes="pipes.sh -p 5 -R"
+
 # ssh
-alias ale="ssh ****@aledec.com"
-alias salewww="scp ****@aledec.com:/var/www/****/html"
+alias ale="ssh aidee@aledec.com"
 
 # tmux
 alias ts="tmux new -s"
