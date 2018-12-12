@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:$PATH
+export PATH=~/.cargo/bin:$PATH
 source ~/.zsh_plugins.sh
 setopt auto_cd
-export PATH=~/development/flutter/bin:$PATH
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
@@ -11,15 +11,14 @@ SAVEHIST=$HISTSIZE
 autoload -U compinit
 compinit
 
-## Geometry stuff
-#PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-#PROMPT_GEOMETRY_EXEC_TIME=true
-#PROMPT_GEOMETRY_GIT_CONFLICTS=true
-#GEOMETRY_COLOR_DIR="pink"
-
 ## Aliases
 # clear screen
 alias cl="clear"
+
+# git
+alias st="git status"
+alias pul="git pull"
+alias gp="git push"
 
 # ls stuff
 alias l="exa -l --git --group-directories-first"
@@ -35,8 +34,8 @@ alias pr="pass rm"
 # pipes.sh
 alias pipes="pipes.sh -p 5 -R"
 
-# ssh
-alias ale="ssh aidee@aledec.com"
+# time
+alias t="/usr/bin/time"
 
 # tmux
 alias ts="tmux new -s"

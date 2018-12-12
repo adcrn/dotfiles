@@ -41,7 +41,14 @@ Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'junegunn/limelight.vim'
 
 " fzf
-Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
+
+" Polyglot
+Plugin 'sheerun/vim-polyglot'
+
+" vim-fugitive
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -115,3 +122,7 @@ augroup rainbow
 augroup END
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+let g:vue_disable_pre_processors=1
+
+" Vue syntax highlighting
+autocmd FileType vue syntax sync fromstart
