@@ -2,6 +2,8 @@ export EDITOR=nvim
 export PATH=/usr/local/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
 export DEV=~/dev
+export PER=~/dev/personal
+export PRO=~/dev/professional
 setopt auto_cd
 
 ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
@@ -46,6 +48,10 @@ alias pul="git pull"
 alias gp="git push"
 alias -s git="git clone"
 
+# videos
+alias iina="/Applications/IINA.app/Contents/MacOS/iina-cli"
+alias -s {avi,flv,mkv,mov,mp4,mpeg,mpg,ogm,webm}="/Applications/IINA.app/Contents/MacOS/iina-cli"
+
 # ls stuff
 alias l="exa -l --git --group-directories-first"
 alias la="exa -la --git --group-directories-first"
@@ -56,6 +62,9 @@ alias p="pass"
 alias pg="pass generate"
 alias pc="pass -c"
 alias pr="pass rm"
+
+# pipes.sh
+alias pipes="pipes.sh -p 5 -R"
 
 # time
 alias t="/usr/bin/time"
@@ -71,6 +80,11 @@ alias tka="tmux kill-server"
 alias v="nvim"
 alias vim="nvim"
 
+## "fancy" type
+alias dev="cd ~/dev/"
+alias personal="cd ~/dev/personal"
+alias business="cd ~/dev/professional"
+
 alias reload="exec zsh -l"
 alias zedit="$EDITOR $HOME/.zshrc"
 
@@ -83,3 +97,9 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
+function pub_transfer() {
+    scp "$1" ohell@naw.wtf:~/public;
+    echo "https://hel.naw.wtf/$1:t" | pbcopy
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

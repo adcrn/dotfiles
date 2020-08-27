@@ -4,66 +4,76 @@ syntax on
 
 set rtp+=/usr/local/opt/fzf
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
 " Intellisense engine
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Lightline, statusbar customization
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " Easy commenting
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
 " themes
-Plugin 'haishanh/night-owl.vim'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " Autoclose
-Plugin 'townk/vim-autoclose'
+Plug 'townk/vim-autoclose'
 
 " Nerdtree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Rainbow Parantheses
-Plugin 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 " fzf
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Polyglot
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " vim-fugitive
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-call vundle#end()            " required
+" markdown-toc
+Plug 'mzlogin/vim-markdown-toc'
+
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
+
+call plug#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
+let mapleader = ","
+
+function! s:copy_results(lines)
+  let joined_lines = join(a:lines, "\n")
+  if len(a:lines) > 1
+    let joined_lines .= "\n"
+  endif
+  let @+ = joined_lines
+endfunction
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-o': function('s:copy_results'),
+  \ }
 
 " Status bar themeing
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ }
+
+let g:zettel_fzf_command = "rg --column --line-number --ignore-case --no-heading --color=always"
+
+" Settings for Vimwiki
+let g:vimwiki_list = [{'path':'~/cabinet/','ext':'.wiki', 'diary_rel_path':'journal/', 'diary_index':'journal', 'syntax':'markdown'}]
 
 set backspace=indent,eol,start "backspace over everything in insert
 set cursorline           " highlight current line
@@ -108,6 +118,15 @@ augroup END
 
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 let g:rustfmt_autosave = 1
+
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
+command! Journal VimwikiDiaryIndex
+augroup vimwikigroup
+    autocmd!
+    " automatically update links on read diary
+    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
+augroup end
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
