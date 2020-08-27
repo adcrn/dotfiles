@@ -25,14 +25,11 @@ window:
   # (change requires restart)
   padding:
     x: 2
-    y: 2
+    y: 1
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: true
-
-# Display tabs using this many cells (changes require restart)
-tabspaces: 8
+  decorations: buttonless
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -41,24 +38,24 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Inconsolata for Powerline
+    family: SF Mono
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Regular
 
   # The bold font face
   bold:
-    family: Inconsolata Bold for Powerline
+    family: SF Mono
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Bold
 
   # The italic font face
   italic:
-    family: Inconsolata for Powerline
+    family: SF Mono
     # Style can be specified to pick a specific face.
-    # style: Italic
+    style: Italic
 
   # Point size of the font
-  size: 13.0
+  size: 11.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -79,46 +76,44 @@ font:
   use_thin_strokes: true
 
 # Should display the render timer
-render_timer: false
+debug.render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
-# Colors (Monokai)
 colors:
-  # Default colors
+
   primary:
-    background: '0x272822'
-    foreground: '0xf8f8f2'
+    background: '#282a36'
+    foreground: '#eff0eb'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x272822'
-    cursor: '0xf8f8f2'
+    cursor: '#97979b'
 
-  # Normal colors
+  selection:
+    text:       '#282a36'
+    background: '#feffff'
+
   normal:
-    black:   '0x272822'
-    red:     '0xf92672'
-    green:   '0xa6e22e'
-    yellow:  '0xf4bf75'
-    blue:    '0x66d9ef'
-    magenta: '0xae81ff'
-    cyan:    '0xa1efe4'
-    white:   '0xf8f8f2'
+    black:   '#282a36'
+    red:     '#ff5c57'
+    green:   '#5af78e'
+    yellow:  '#f3f99d'
+    blue:    '#57c7ff'
+    magenta: '#ff6ac1'
+    cyan:    '#9aedfe'
+    white:   '#f1f1f0'
 
-  # Bright colors
   bright:
-    black:   '0x75715e'
-    red:     '0xf92672'
-    green:   '0xa6e22e'
-    yellow:  '0xf4bf75'
-    blue:    '0x66d9ef'
-    magenta: '0xae81ff'
-    cyan:    '0xa1efe4'
-    white:   '0xf8f8f2'
-
+    black:   '#686868'
+    red:     '#ff5c57'
+    green:   '#5af78e'
+    yellow:  '#f3f99d'
+    blue:    '#57c7ff'
+    magenta: '#ff6ac1'
+    cyan:    '#9aedfe'
+    white:   '#eff0eb'
 
 # Visual Bell
 #
@@ -142,12 +137,12 @@ colors:
 #
 # To completely disable the visual bell, set its duration to 0.
 #
-visual_bell:
+bell:
   animation: EaseOutExpo
-  duration: 0
+  duration: 1
 
 # Background opacity
-background_opacity: 0.9
+background_opacity: 0.95
 
 # Mouse bindings
 #
@@ -189,7 +184,7 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
-dynamic_title: true
+window.dynamic_title: true
 
 hide_cursor_when_typing: false
 
@@ -203,6 +198,16 @@ cursor_style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
+
+scrolling:
+  # How many lines of scrollback to keep,
+  # '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line
+  # scrolled when scrollback is enabled (history > 0).
+  multiplier: 3
+
 
 # Shell
 #
